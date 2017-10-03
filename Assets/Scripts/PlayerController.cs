@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed = 1.75f;
-	public float jumpForce = 250f;
+	public float speed, jumpForce, maxDepth;
 	Rigidbody rb;
 	bool canJump;
+
+	public bool restrictingDepth;
 
 	// Use this for initialization
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
+		speed = 1.75f;
+		jumpForce = 250f;
 		canJump = true;
 	}
 
@@ -27,11 +30,15 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Space) && canJump) {
 			rb.AddForce (Vector3.up * jumpForce);
-		}
+		}	
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		if (restrictingDepth) {
+			ClampPosition ();
+		}
 
 	}
 
@@ -47,6 +54,13 @@ public class PlayerController : MonoBehaviour {
 		if (other.CompareTag("Ground")) {
 			canJump = false;
 		}
+	}
+
+	void ClampPosition()
+	{
+		Vector3 clampedPosition = transform.position;
+		clampedPosition.z = Mathf.Clamp (transform.position.z, -maxDepth, maxDepth);
+		transform.position = clampedPosition;
 	}
 
 }
