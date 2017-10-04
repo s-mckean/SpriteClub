@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         ResetToStart(other);
     }
-
+    
     private void ResetToStart(Collider obj)
     {
         PlayerController playerController = obj.GetComponent<PlayerController>();
