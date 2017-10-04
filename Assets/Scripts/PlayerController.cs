@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour {
 	bool canJump;
 
 	public bool restrictingDepth;
+    public Vector3 startPosition;
 
 	// Use this for initialization
 	void Start () 
 	{
+        startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
 		speed = 1.75f;
 		jumpForce = 250f;
