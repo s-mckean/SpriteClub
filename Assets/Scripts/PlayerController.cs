@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed, jumpForce, maxDepth;
 	Rigidbody rb;
 	bool canJump;
+    int coinsCollected = 0;
 
 	public bool restrictingDepth;
     public Vector3 startPosition;
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour {
 		if (other.CompareTag("Ground")) {
 			canJump = true;
 		}
+        if (other.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            IncrementCoins();
+        }
 	}
 
 	void OnTriggerExit(Collider other) 
@@ -64,5 +70,11 @@ public class PlayerController : MonoBehaviour {
 		clampedPosition.z = Mathf.Clamp (transform.position.z, -maxDepth, maxDepth);
 		transform.position = clampedPosition;
 	}
+
+    void IncrementCoins()
+    {
+        coinsCollected++;
+        GameManager.instance.UpdateCoinsText(coinsCollected);
+    }
 
 }
