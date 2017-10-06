@@ -27,6 +27,16 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+	public static void ResetToStart(Collider obj)
+	{
+		if (obj.CompareTag ("Player")) {
+			PlayerController playerController = obj.GetComponent<PlayerController> ();
+			obj.transform.position = playerController.startPosition;
+			playerController.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			playerController.GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
+		}
+	}
+
     public void UpdateCoinsText(int totalCoins)
     {
 		coinsText.text = totalCoins.ToString();

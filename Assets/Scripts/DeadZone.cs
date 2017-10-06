@@ -6,14 +6,9 @@ public class DeadZone : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        ResetToStart(other);
+        GameManager.ResetToStart(other);
     }
     
-    private void ResetToStart(Collider obj)
-    {
-        PlayerController playerController = obj.GetComponent<PlayerController>();
-        obj.transform.position = playerController.startPosition;
-        playerController.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    }
+    
+
 }
