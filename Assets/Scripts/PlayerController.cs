@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	{
         startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
-		speed = 1.75f;
+		//speed = 1.75f;  // Set value in Inspector
 		jumpForce = 250f;
 		canJump = true;
 	}
