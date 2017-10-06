@@ -91,7 +91,7 @@ Rigidbody:
   m_GameObject: {fileID: 1141462377508630}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc5ae81b41ec0d488450100ab392a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.75
-  jumpForce: 250
+  speed: 14
+  jumpForce: 375
   maxDepth: 1.5
   restrictingDepth: 0
   startPosition: {x: 0, y: 0, z: 0}
