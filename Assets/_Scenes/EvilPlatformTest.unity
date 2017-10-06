@@ -229,6 +229,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1896880424739004, guid: 1a0300ca1e0ce454db051c89b520d6bc, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a0300ca1e0ce454db051c89b520d6bc, type: 2}
   m_IsPrefabParent: 0
@@ -449,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero: {fileID: 1856498889}
+  coinsText: {fileID: 0}
 --- !u!4 &683419881
 Transform:
   m_ObjectHideFlags: 0
