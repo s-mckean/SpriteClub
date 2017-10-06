@@ -29,6 +29,6 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateCoinsText(int totalCoins)
     {
-        coinsText.text = "Coins: " + totalCoins;
+		coinsText.text = totalCoins.ToString();
     }
 }
