@@ -8,7 +8,7 @@ public class CoinController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.Rotate(Vector3.up, Time.deltaTime * rotationSpeed);
+        transform.Rotate(Vector3.back, Time.deltaTime * rotationSpeed);
 	}
 
 }

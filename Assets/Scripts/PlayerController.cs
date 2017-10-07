@@ -45,10 +45,10 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Ground")) {
+        if (other.CompareTag("Ground")) {
 			canJump = true;
 		}
-        if (other.CompareTag("Coin"))
+        if (other.CompareTag("Ring"))
         {
             Destroy(other.gameObject);
             IncrementCoins();
