@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54820741295129906}
   - component: {fileID: 136827366555571050}
   - component: {fileID: 114103889420915932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ring
   m_TagString: Ring
   m_Icon: {fileID: 0}
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 65
+  defaultColor: {r: 0.61960787, g: 0.5764706, b: 0.03529412, a: 1}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &136827366555571050
 CapsuleCollider:
   m_ObjectHideFlags: 1

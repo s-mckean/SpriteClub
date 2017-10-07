@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour {
 	public bool restrictingDepth;
     public Vector3 startPosition;
 
+	// touchscreen vars
+	Vector2 touchOrigin = -Vector2.one;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
@@ -31,7 +35,36 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Space) && canJump) {
 			rb.AddForce (Vector3.up * jumpForce);
-		}	
+		}
+
+		#if UNITY_IOS
+
+		if(Input.touchCount > 0)
+		{
+			foreach(Touch t in Input.touches)
+			{
+				if(t.phase == TouchPhase.Began)
+				{
+					Debug.Log("Tap worked");
+				}
+				else if(t.phase == TouchPhase.Stationary)
+				{
+					Debug.Log("Hold worked");
+				}
+			}
+		}
+
+
+		float pointer_x = Input.GetAxis("Mouse X");
+		float pointer_y = Input.GetAxis("Mouse Y");
+
+		if (Input.touchCount > 0)
+		{
+			pointer_x = Input.touches[0].deltaPosition.x;
+			pointer_y = Input.touches[0].deltaPosition.y;
+		}
+
+		#endif
 	}
 
 	// Update is called once per frame
