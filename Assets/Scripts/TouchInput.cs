@@ -35,7 +35,7 @@ public class TouchInput : MonoBehaviour {
 		if (usingRaycasts) {
 			RaycastInIOS();
 		} else {
-			TouchInIOS();
+			TouchInEditor();
 		}
 
 #endif
