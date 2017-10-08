@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &461446749
 GameObject:
@@ -311,7 +311,7 @@ Transform:
   - {fileID: 1871162302}
   - {fileID: 1615055537}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639420195
 GameObject:
@@ -432,7 +432,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4791402213948088, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1141462377508630, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
       propertyPath: m_Layer
@@ -516,7 +516,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &836320791
 Prefab:
@@ -668,7 +668,7 @@ RectTransform:
   m_Children:
   - {fileID: 2051739445}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -852,7 +852,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -45, z: 0}
 --- !u!4 &1280624760 stripped
 Transform:
@@ -1360,7 +1360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046759052
 GameObject:
@@ -1375,7 +1375,6 @@ GameObject:
   - component: {fileID: 2046759054}
   - component: {fileID: 2046759053}
   - component: {fileID: 2046759058}
-  - component: {fileID: 2046759059}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1467,24 +1466,6 @@ MonoBehaviour:
   player: {fileID: 1856498889}
   heightAbovePlayer: 5
   cameraDistance: 11
---- !u!114 &2046759059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046759052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd96844a7650ecb48bd993872f6bc215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usingRaycasts: 0
-  player: {fileID: 1856498889}
-  movementScale: 4
-  clickThreshold: 0.25
-  touchInputMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &2051739444
 GameObject:
   m_ObjectHideFlags: 0
