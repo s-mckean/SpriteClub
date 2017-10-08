@@ -5,15 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float speed, jumpForce, maxDepth;
+	public bool restrictingDepth;
+	public Vector3 startPosition;
+
 	Rigidbody rb;
 	bool canJump;
     int coinsCollected = 0;
-
-	public bool restrictingDepth;
-    public Vector3 startPosition;
-
-	// touchscreen vars
-	Vector2 touchOrigin = -Vector2.one;
 
 	// Use this for initialization
 	void Start () 
@@ -37,34 +34,6 @@ public class PlayerController : MonoBehaviour {
 			rb.AddForce (Vector3.up * jumpForce);
 		}
 
-		#if UNITY_IOS
-
-		if(Input.touchCount > 0)
-		{
-			foreach(Touch t in Input.touches)
-			{
-				if(t.phase == TouchPhase.Began)
-				{
-					Debug.Log("Tap worked");
-				}
-				else if(t.phase == TouchPhase.Stationary)
-				{
-					Debug.Log("Hold worked");
-				}
-			}
-		}
-
-
-		float pointer_x = Input.GetAxis("Mouse X");
-		float pointer_y = Input.GetAxis("Mouse Y");
-
-		if (Input.touchCount > 0)
-		{
-			pointer_x = Input.touches[0].deltaPosition.x;
-			pointer_y = Input.touches[0].deltaPosition.y;
-		}
-
-		#endif
 	}
 
 	// Update is called once per frame
@@ -107,5 +76,18 @@ public class PlayerController : MonoBehaviour {
         coinsCollected++;
         GameManager.instance.UpdateCoinsText(coinsCollected);
     }
+
+	void OnTouchDown(Point axisData) 
+	{
+		Vector3 movement = new Vector3 (axisData.x, 0f, axisData.z);
+		rb.AddForce (movement * speed);
+	}
+
+	void OnClick()
+	{
+		if (canJump) {
+			rb.AddForce (Vector3.up * jumpForce);
+		}
+	}
 
 }

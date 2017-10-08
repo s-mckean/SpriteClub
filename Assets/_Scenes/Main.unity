@@ -438,6 +438,41 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: defaultColor.r
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: defaultColor.g
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: defaultColor.b
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: defaultColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: selectedColor.r
+      value: 0.12024221
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: selectedColor.g
+      value: 0.7981594
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: selectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
   m_IsPrefabParent: 0
@@ -1280,6 +1315,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1992330308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1992330310}
+  - component: {fileID: 1992330309}
+  m_Layer: 0
+  m_Name: Touch Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1992330309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992330308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd96844a7650ecb48bd993872f6bc215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingRaycasts: 0
+  player: {fileID: 1856498889}
+  movementScale: 3.5
+  clickThreshold: 0.25
+  touchInputMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!4 &1992330310
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992330308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046759052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,6 +1478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96844a7650ecb48bd993872f6bc215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usingRaycasts: 0
+  player: {fileID: 1856498889}
+  movementScale: 4
+  clickThreshold: 0.25
   touchInputMask:
     serializedVersion: 2
     m_Bits: 256
