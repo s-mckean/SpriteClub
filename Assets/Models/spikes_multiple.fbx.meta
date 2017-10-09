@@ -1,17 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 4a9334a863016974eb9fa471b2986fd9
-timeCreated: 1507159540
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
-=======
-guid: 62b3c465b02a92547a18da739cf1ad1e
-timeCreated: 1507160959
-licenseType: Free
-ModelImporter:
-  serializedVersion: 21
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
   fileIDToRecycleName:
     100000: pCube1
     100002: pCube2
@@ -55,17 +45,6 @@ ModelImporter:
     4300010: pCube6
     4300012: pCube7
     4300014: pCube8
-<<<<<<< HEAD
-=======
-    6400000: pCube1
-    6400002: pCube2
-    6400004: pCube3
-    6400006: pCube4
-    6400008: pCube5
-    6400010: pCube6
-    6400012: pCube7
-    6400014: pCube8
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -77,11 +56,6 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-<<<<<<< HEAD
-=======
-    rigImportErrors: 
-    rigImportWarnings: 
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -92,28 +66,14 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-<<<<<<< HEAD
-=======
-    extraUserProperties: []
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
-=======
-    globalScale: 30
-    meshCompression: 0
-    addColliders: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -129,10 +89,6 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-<<<<<<< HEAD
-=======
-    normalCalculationMode: 4
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

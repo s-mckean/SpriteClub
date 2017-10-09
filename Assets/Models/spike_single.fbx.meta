@@ -1,27 +1,13 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: edf5d2609e380c8409061e356f6a1951
-timeCreated: 1507159540
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
-=======
-guid: 80795304719a6ce469640067ab327a80
-timeCreated: 1507160960
-licenseType: Free
-ModelImporter:
-  serializedVersion: 21
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
     4300000: pCube5
-<<<<<<< HEAD
-=======
-    6400000: //RootNode
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -33,11 +19,6 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-<<<<<<< HEAD
-=======
-    rigImportErrors: 
-    rigImportWarnings: 
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -48,28 +29,14 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-<<<<<<< HEAD
-=======
-    extraUserProperties: []
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
-=======
-    globalScale: 30
-    meshCompression: 0
-    addColliders: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -85,10 +52,6 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-<<<<<<< HEAD
-=======
-    normalCalculationMode: 4
->>>>>>> ff68deda85704a1fbe6d19f6f3172c967a2fe00c
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
