@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -61,11 +62,12 @@ public class GameManager : MonoBehaviour {
             YouWin.GetComponent<Text>().enabled = false;
             gameEnded = false;
         }
-        GameObject obj = GameObject.FindGameObjectWithTag("Player");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*GameObject obj = GameObject.FindGameObjectWithTag("Player");
         PlayerController playerController = obj.GetComponent<PlayerController>();
         obj.transform.position = playerController.startPosition;
         playerController.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
     }
 
     // Consolidated into IncrementCoins()
