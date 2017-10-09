@@ -5,7 +5,7 @@ using UnityEngine;
 public class DepthController : MonoBehaviour {
 
 	PlayerController controller;
-	public float newMaxDepth = 5.0f;
+	public float newMaxDepth = 2.25f;
 
 	float initialMaxDepth;
 
