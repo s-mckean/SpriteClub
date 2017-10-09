@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed, jumpForce, maxDepth;
+    public float speed, jumpForce, maxDepth;
 	public bool restrictingDepth;
 	public Vector3 startPosition;
+    public float speedCap = 25f;
 
 	Rigidbody rb;
 	float radius, distanceToGround;
@@ -65,6 +66,10 @@ public class PlayerController : MonoBehaviour {
             Destroy(other.gameObject);
             IncrementCoins();
         }
+        if (other.CompareTag("Exit"))
+        {
+            Debug.Log("You Win");
+        }
 	}
 
 	void ClampPosition()
@@ -77,6 +82,12 @@ public class PlayerController : MonoBehaviour {
     void IncrementCoins()
     {
         coinsCollected++;
+
+        if (speed < speedCap)
+        {
+            speed++;
+        }
+
         GameManager.instance.UpdateCoinsText(coinsCollected);
     }
 
