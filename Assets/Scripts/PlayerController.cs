@@ -4,65 +4,94 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed, jumpForce, maxDepth;
-	Rigidbody rb;
-	bool canJump;
-
+    // Moved speed and speedCap to GameManager since they need to be accessible to other scripts
+    public float jumpForce, maxDepth;
 	public bool restrictingDepth;
-    public Vector3 startPosition;
+	public Vector3 startPosition;
+
+	Rigidbody rb;
+	float radius, distanceToGround;
+
+	Collider[] colliders;
 
 	// Use this for initialization
 	void Start () 
 	{
+		radius = GetComponent<SphereCollider> ().radius + 0.2f;
         startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
-		speed = 1.75f;
-		jumpForce = 250f;
-		canJump = true;
+		distanceToGround = GetComponent<Collider> ().bounds.extents.y;
 	}
 
 	void FixedUpdate()
 	{
+
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
-		rb.AddForce (movement * speed);
+		if (restrictingDepth) {
+			ClampPosition ();
+		}
 
-		if (Input.GetKeyDown(KeyCode.Space) && canJump) {
+		rb.AddForce (movement * GameManager.instance.speed);
+
+		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 			rb.AddForce (Vector3.up * jumpForce);
-		}	
+		}
+
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		if (restrictingDepth) {
-			ClampPosition ();
-		}
-
 	}
 
+	bool IsGrounded()
+	{
+		colliders = Physics.OverlapSphere (transform.position, radius);
+		foreach (Collider collider in colliders) {
+			if (collider.name != "Player" && collider.CompareTag ("Ground"))
+				return true;
+		}
+		return false;
+//		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
+	}
+
+    // Moved collision detection to CoinController and EndZone
+/*
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Ground")) {
-			canJump = true;
-		}
+        if (other.CompareTag("Ring")) {
+            Destroy(other.gameObject);
+            IncrementCoins();
+        }
+        if (other.CompareTag("End"))
+        {
+            Debug.Log("You Win");
+            GameManager.instance.PlayerWin();
+        }
 	}
-
-	void OnTriggerExit(Collider other) 
-	{
-		if (other.CompareTag("Ground")) {
-			canJump = false;
-		}
-	}
-
+*/
 	void ClampPosition()
 	{
 		Vector3 clampedPosition = transform.position;
 		clampedPosition.z = Mathf.Clamp (transform.position.z, -maxDepth, maxDepth);
 		transform.position = clampedPosition;
+	}
+
+	void OnTouchDown(Point axisData) 
+	{
+		Vector3 movement = new Vector3 (axisData.x, 0f, axisData.z);
+		rb.AddForce (movement * GameManager.instance.speed);
+	}
+
+	void OnClick()
+	{
+		if (IsGrounded()) {
+			rb.AddForce (Vector3.up * jumpForce);
+		}
 	}
 
 }
