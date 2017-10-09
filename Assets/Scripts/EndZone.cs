@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadZone : MonoBehaviour {
+public class EndZone : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.ResetToStart();
+            GameManager.instance.PlayerWin();
         }
     }
 }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float speed, jumpForce, maxDepth;
+    // Moved speed and speedCap to GameManager since they need to be accessible to other scripts
+    public float jumpForce, maxDepth;
 	public bool restrictingDepth;
 	public Vector3 startPosition;
-    public float speedCap;
 
 	Rigidbody rb;
 	float radius, distanceToGround;
-    int coinsCollected = 0;
 
 	Collider[] colliders;
 
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 			ClampPosition ();
 		}
 
-		rb.AddForce (movement * speed);
+		rb.AddForce (movement * GameManager.instance.speed);
 
 		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 			rb.AddForce (Vector3.up * jumpForce);
@@ -60,18 +59,21 @@ public class PlayerController : MonoBehaviour {
 //		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
 	}
 
+    // Moved collision detection to CoinController and EndZone
+/*
 	void OnTriggerEnter(Collider other)
 	{
         if (other.CompareTag("Ring")) {
             Destroy(other.gameObject);
             IncrementCoins();
         }
-        if (other.CompareTag("Exit"))
+        if (other.CompareTag("End"))
         {
             Debug.Log("You Win");
+            GameManager.instance.PlayerWin();
         }
 	}
-
+*/
 	void ClampPosition()
 	{
 		Vector3 clampedPosition = transform.position;
@@ -79,22 +81,10 @@ public class PlayerController : MonoBehaviour {
 		transform.position = clampedPosition;
 	}
 
-    void IncrementCoins()
-    {
-        coinsCollected++;
-
-        if (speed < speedCap)
-        {
-            speed++;
-        }
-
-        GameManager.instance.UpdateCoinsText(coinsCollected);
-    }
-
 	void OnTouchDown(Point axisData) 
 	{
 		Vector3 movement = new Vector3 (axisData.x, 0f, axisData.z);
-		rb.AddForce (movement * speed);
+		rb.AddForce (movement * GameManager.instance.speed);
 	}
 
 	void OnClick()

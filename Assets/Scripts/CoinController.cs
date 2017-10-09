@@ -8,6 +8,7 @@ public class CoinController : MonoBehaviour {
 	public Color defaultColor;
 	public Color selectedColor;
 	Material mat;
+    private bool coinCollected = false;
 
 	void Start() {
 		mat = GetComponent<Renderer> ().material;
@@ -38,4 +39,16 @@ public class CoinController : MonoBehaviour {
 		mat.color = defaultColor;
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!coinCollected)
+            {
+                coinCollected = true;
+                Destroy(gameObject);
+                GameManager.instance.IncrementCoins();
+            }
+        }
+    }
 }

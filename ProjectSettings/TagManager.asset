@@ -8,6 +8,7 @@ TagManager:
   - Ring
   - Entrance
   - Exit
+  - End
   layers:
   - Default
   - TransparentFX

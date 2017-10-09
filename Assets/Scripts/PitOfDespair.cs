@@ -22,10 +22,13 @@ public class PitOfDespair : MonoBehaviour {
 		}
 	}
 
-	IEnumerator ResetIn(Collider other)
-	{
-		yield return new WaitForSeconds (resetDelay);
-		GameManager.ResetToStart(other);
+    IEnumerator ResetIn(Collider other)
+    {
+        yield return new WaitForSeconds(resetDelay);
+        if (other.CompareTag("Player"))
+        {
+            GameManager.instance.ResetToStart();
+        }
 	}
 
 
