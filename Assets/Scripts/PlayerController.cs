@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 startPosition;
 
 	Rigidbody rb;
-	bool canJump;
+	float distanceToGround;
     int coinsCollected = 0;
 
 	// Use this for initialization
@@ -17,20 +17,24 @@ public class PlayerController : MonoBehaviour {
 	{
         startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
-		canJump = true;
+		distanceToGround = GetComponent<Collider> ().bounds.extents.y;
 	}
 
 	void FixedUpdate()
 	{
-		
+
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
+		if (restrictingDepth) {
+			ClampPosition ();
+		}
+
 		rb.AddForce (movement * speed);
 
-		if (Input.GetKeyDown(KeyCode.Space) && canJump) {
+		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 			rb.AddForce (Vector3.up * jumpForce);
 		}
 
@@ -39,29 +43,20 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (restrictingDepth) {
-			ClampPosition ();
-		}
+		Debug.Log (IsGrounded());
+	}
 
+	bool IsGrounded()
+	{
+		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-        if (other.CompareTag("Ground")) {
-			canJump = true;
-		}
-        if (other.CompareTag("Ring"))
-        {
+        if (other.CompareTag("Ring")) {
             Destroy(other.gameObject);
             IncrementCoins();
         }
-	}
-
-	void OnTriggerExit(Collider other) 
-	{
-		if (other.CompareTag("Ground")) {
-			canJump = false;
-		}
 	}
 
 	void ClampPosition()
@@ -85,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnClick()
 	{
-		if (canJump) {
+		if (IsGrounded()) {
 			rb.AddForce (Vector3.up * jumpForce);
 		}
 	}
