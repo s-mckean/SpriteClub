@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 startPosition;
 
 	Rigidbody rb;
-	float distanceToGround;
+	float radius, distanceToGround;
     int coinsCollected = 0;
+
+	Collider[] colliders;
 
 	// Use this for initialization
 	void Start () 
 	{
+		radius = GetComponent<SphereCollider> ().radius + 0.2f;
         startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
 		distanceToGround = GetComponent<Collider> ().bounds.extents.y;
@@ -47,7 +50,13 @@ public class PlayerController : MonoBehaviour {
 
 	bool IsGrounded()
 	{
-		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
+		colliders = Physics.OverlapSphere (transform.position, radius);
+		foreach (Collider collider in colliders) {
+			if (collider.name != "Player" && collider.CompareTag ("Ground"))
+				return true;
+		}
+		return false;
+//		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
 	}
 
 	void OnTriggerEnter(Collider other)
