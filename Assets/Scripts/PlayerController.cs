@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float speed, jumpForce, maxDepth;
 	public bool restrictingDepth;
 	public Vector3 startPosition;
-    public float speedCap = 25f;
+    public float speedCap;
 
 	Rigidbody rb;
 	float radius, distanceToGround;
