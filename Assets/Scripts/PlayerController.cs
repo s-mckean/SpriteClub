@@ -56,24 +56,16 @@ public class PlayerController : MonoBehaviour {
 				return true;
 		}
 		return false;
-//		return Physics.Raycast (transform.position, Vector3.down, distanceToGround + 0.1f);
 	}
 
     // Moved collision detection to CoinController and EndZone
-/*
 	void OnTriggerEnter(Collider other)
 	{
-        if (other.CompareTag("Ring")) {
-            Destroy(other.gameObject);
-            IncrementCoins();
-        }
-        if (other.CompareTag("End"))
-        {
-            Debug.Log("You Win");
-            GameManager.instance.PlayerWin();
+        if (other.CompareTag("Enemy")) {
+			GameManager.DamagePlayer ();
         }
 	}
-*/
+
 	void ClampPosition()
 	{
 		Vector3 clampedPosition = transform.position;

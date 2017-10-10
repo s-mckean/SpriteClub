@@ -86,4 +86,11 @@ public class GameManager : MonoBehaviour {
             Invoke("ResetToStart", 5f);
         }
     }
+
+	public static void DamagePlayer() 
+	{
+		Debug.Log ("Health -1!");
+		// decrement health and update UI
+		// decide if spikes can hurt player one or more times #decide
+	}
 }
