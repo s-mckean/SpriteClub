@@ -33,7 +33,9 @@ public class FallingSpike : MonoBehaviour {
 			if (transform.childCount == 0) {
 				rb.isKinematic = false;
 			} else {
+				if (spikes.Count > 0) {
 				StartCoroutine ("FallRandomly");
+				}
 			}
 		}
 	}
@@ -42,8 +44,10 @@ public class FallingSpike : MonoBehaviour {
 	{
 		for (int i = 0; i < numberOfSpikes; i ++) {			
 			int index = Random.Range (0, spikes.Count);
-			spikes[index].GetComponent<Rigidbody> ().isKinematic = false;
-			spikes.Remove (spikes[index]);
+			try {
+				spikes[index].GetComponent<Rigidbody> ().isKinematic = false;
+				spikes.Remove (spikes[index]);
+			} catch {/*ignore ArgumentOutOfRange exception*/}
 			yield return new WaitForSeconds (Random.Range(minSpikeFallTime, maxSpikeFallTime));
 		}
 		yield return null;
