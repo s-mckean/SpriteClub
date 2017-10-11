@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 
 	PlayerController controller;
 	bool gameEnded = false;
-    int coinsCollected = 0;
+    int currentCheckpoint, coinsCollected = 0;
 	Vector3 checkpointPosition;
 
     private void Awake()
@@ -111,13 +111,14 @@ public class GameManager : MonoBehaviour {
 		controller.SetHealth (controller.GetHealth() - damageIncrement);
 	}
 
-	public void SetCheckpoint(Vector3 checkpoint)
+	public void SetCheckpoint(Vector3 checkpoint, int checkpointNum)
 	{
+		currentCheckpoint = checkpointNum;
 		checkpointPosition = checkpoint;
 	}
 
-	public Vector3 GetCheckpointPosition()
+	public int GetLastCheckpoint()
 	{
-		return checkpointPosition;
+		return currentCheckpoint;
 	}
 }
