@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour {
     // Moved collision detection to CoinController and EndZone
 	void OnTriggerEnter(Collider other)
 	{
-        if (other.CompareTag("Enemy")) {
-			GameManager.DamagePlayer ();
+		if (other.CompareTag("Enemy") && !other.isTrigger) {
+			GameManager.instance.DamagePlayer ();
         }
 	}
 

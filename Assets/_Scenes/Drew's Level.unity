@@ -569,11 +569,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4713004616315224, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.64
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4713004616315224, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.82
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4713004616315224, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -598,10 +598,6 @@ Prefab:
     - target: {fileID: 4713004616315224, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1151404455133096, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dea67865a9364bf4296d2c53868fdf4e, type: 2}
@@ -5010,6 +5006,8 @@ MonoBehaviour:
   hero: {fileID: 1856498889}
   coinsText: {fileID: 2051739446}
   YouWin: {fileID: 2122716168}
+  healthBar: {fileID: 650538746}
+  damageIncrement: 0.05
   speed: 18
   speedCap: 25
 --- !u!4 &683419881
@@ -11881,8 +11879,8 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 897877424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5545771}
@@ -11890,7 +11888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 23.5, y: -12.4}
+  m_AnchoredPosition: {x: 23.500074, y: -12.400009}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897877426
@@ -11905,7 +11903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

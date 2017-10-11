@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public Text coinsText;
     public Text YouWin;
     public static GameManager instance = null;
+	public Image healthBar;
+	public float damageIncrement = 0.05f;
 
     public float speed, speedCap;
     private bool gameEnded = false;
@@ -87,10 +89,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-	public static void DamagePlayer() 
+	public void DamagePlayer() 
 	{
 		Debug.Log ("Health -1!");
 		// decrement health and update UI
 		// decide if spikes can hurt player one or more times #decide
+		healthBar.fillAmount -= damageIncrement;
+		
+
 	}
 }
