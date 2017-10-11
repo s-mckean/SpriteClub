@@ -5,16 +5,19 @@ using UnityEngine;
 public class FallingSpike : MonoBehaviour {
 
 	public float triggerDistance = 8f;
-	public GameObject[] spikes;
+	public List<GameObject> spikes = new List<GameObject>();
+	public float minSpikeFallTime, maxSpikeFallTime;
 
 	BoxCollider trigger;
 	Rigidbody rb;
+	int numberOfSpikes;
 
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<BoxCollider> ();
 		SetTriggerDistance ();
 		rb = GetComponent<Rigidbody> ();
+		numberOfSpikes = spikes.Count;
 	}
 	
 	void SetTriggerDistance()
@@ -37,10 +40,11 @@ public class FallingSpike : MonoBehaviour {
 
 	IEnumerator FallRandomly()
 	{
-		foreach (GameObject child in spikes) {
-			child.GetComponent<Rigidbody> ().isKinematic = false;
-			child.transform.parent = null;
-			yield return new WaitForSeconds (Random.Range(0.0f, 0.1f));
+		for (int i = 0; i < numberOfSpikes; i ++) {			
+			int index = Random.Range (0, spikes.Count);
+			spikes[index].GetComponent<Rigidbody> ().isKinematic = false;
+			spikes.Remove (spikes[index]);
+			yield return new WaitForSeconds (Random.Range(minSpikeFallTime, maxSpikeFallTime));
 		}
 		yield return null;
 	}
