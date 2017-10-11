@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 startPosition;
 
 	Rigidbody rb;
-	float radius, distanceToGround;
+	float radius, health;
+
 
 	Collider[] colliders;
 
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 		radius = GetComponent<SphereCollider> ().radius + 0.2f;
         startPosition = transform.position;
 		rb = GetComponent<Rigidbody> ();
-		distanceToGround = GetComponent<Collider> ().bounds.extents.y;
+		health = 1f;
 	}
 
 	void FixedUpdate()
@@ -71,6 +72,16 @@ public class PlayerController : MonoBehaviour {
 		Vector3 clampedPosition = transform.position;
 		clampedPosition.z = Mathf.Clamp (transform.position.z, -maxDepth, maxDepth);
 		transform.position = clampedPosition;
+	}
+
+	public float GetHealth()
+	{
+		return health;
+	}
+
+	public void SetHealth(float newHealth)
+	{
+		health = newHealth;
 	}
 
 	void OnTouchDown(Point axisData) 

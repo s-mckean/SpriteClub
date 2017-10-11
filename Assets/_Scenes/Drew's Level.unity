@@ -5009,10 +5009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b008c0f6e8dfc489d793cda32fb2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 1856498889}
+  player: {fileID: 1856498889}
   coinsText: {fileID: 2051739446}
   YouWin: {fileID: 2122716168}
   healthBar: {fileID: 650538746}
+  healthIncrement: 0.05
   damageIncrement: 0.05
   speed: 18
   speedCap: 25

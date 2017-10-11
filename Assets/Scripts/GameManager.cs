@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject hero;
+    public GameObject player;
     public Text coinsText;
     public Text YouWin;
     public static GameManager instance = null;
 	public Image healthBar;
-	public float damageIncrement = 0.05f;
+	public float healthIncrement, damageIncrement = 0.05f;
+	public float speed, speedCap;
 
-    public float speed, speedCap;
-    private bool gameEnded = false;
-    private int coinsCollected = 0;
+	PlayerController controller;
+	bool gameEnded = false;
+    int coinsCollected = 0;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+		controller = player.GetComponent<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour {
         {
             speed++;
         }
-
         coinsText.text = coinsCollected.ToString();
     }
 /*
@@ -89,13 +89,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	public void IncreaseHealth()
+	{
+		controller.SetHealth (controller.GetHealth() + healthIncrement);
+		healthBar.fillAmount += healthIncrement;
+	}
+
 	public void DamagePlayer() 
 	{
 		Debug.Log ("Health -1!");
 		// decrement health and update UI
 		// decide if spikes can hurt player one or more times #decide
 		healthBar.fillAmount -= damageIncrement;
-		
-
+		controller.SetHealth (controller.GetHealth() - damageIncrement);
 	}
 }

@@ -48,6 +48,7 @@ public class CoinController : MonoBehaviour {
                 coinCollected = true;
                 Destroy(gameObject);
                 GameManager.instance.IncrementCoins();
+				GameManager.instance.IncreaseHealth ();
             }
         }
     }
