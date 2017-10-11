@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	PlayerController controller;
 	bool gameEnded = false;
     int coinsCollected = 0;
+	Vector3 checkpointPosition;
 
     private void Awake()
     {
@@ -72,6 +73,12 @@ public class GameManager : MonoBehaviour {
         playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
     }
 
+	public void ResetToCheckpoint()
+	{
+		player.transform.position = checkpointPosition;
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+	}
+
     // Consolidated into IncrementCoins()
 /*
     public void UpdateCoinsText(int totalCoins)
@@ -102,5 +109,15 @@ public class GameManager : MonoBehaviour {
 		// decide if spikes can hurt player one or more times #decide
 		healthBar.fillAmount -= damageIncrement;
 		controller.SetHealth (controller.GetHealth() - damageIncrement);
+	}
+
+	public void SetCheckpoint(Vector3 checkpoint)
+	{
+		checkpointPosition = checkpoint;
+	}
+
+	public Vector3 GetCheckpointPosition()
+	{
+		return checkpointPosition;
 	}
 }

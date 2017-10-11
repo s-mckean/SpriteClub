@@ -8,7 +8,7 @@ public class DeadZone : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.ResetToStart();
+            GameManager.instance.ResetToCheckpoint();
         }
     }
 }
