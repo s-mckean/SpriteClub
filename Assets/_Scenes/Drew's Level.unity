@@ -4980,66 +4980,6 @@ Prefab:
       propertyPath: m_Mass
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: defaultColor.r
-      value: 0.6862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: defaultColor.g
-      value: 0.6862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: defaultColor.b
-      value: 0.6862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: defaultColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: targetColor.r
-      value: 0.30147058
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: targetColor.g
-      value: 0.56643003
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: targetColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: targetColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: partySpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: hangoverSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: restrictingDepth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
-        type: 2}
-      propertyPath: fadeTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
   m_IsPrefabParent: 0
