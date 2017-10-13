@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
-
+    // yo it's carlos
 	public int checkpointNumber;
 
 	void OnTriggerEnter(Collider other)
