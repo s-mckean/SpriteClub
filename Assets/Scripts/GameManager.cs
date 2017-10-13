@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
         {
             speed++;
         }
+		controller.PartyTime ();
         coinsText.text = coinsCollected.ToString();
     }
 /*
