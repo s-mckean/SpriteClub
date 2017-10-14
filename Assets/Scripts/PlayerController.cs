@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody rb;
 	float radius, health;
-
 	Collider[] colliders;
 
 	Renderer renderer;
@@ -47,6 +46,11 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 			rb.AddForce (Vector3.up * jumpForce);
 		}
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Boost(movement);
+        }
 
 	}
 
@@ -133,4 +137,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+    void Boost(Vector3 movement)
+    {
+            if (health > 0)
+            {
+                Debug.Log("Boost activate!");
+                rb.AddForce(movement * 60);
+            }
+   
+    }
 }
