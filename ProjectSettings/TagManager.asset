@@ -10,6 +10,7 @@ TagManager:
   - Exit
   - End
   - Enemy
+  - Bottom
   layers:
   - Default
   - TransparentFX
