@@ -5033,6 +5033,7 @@ MonoBehaviour:
   damageIncrement: 0.05
   speed: 18
   speedCap: 25
+  restartDelay: 2.5
 --- !u!4 &683419881
 Transform:
   m_ObjectHideFlags: 0
