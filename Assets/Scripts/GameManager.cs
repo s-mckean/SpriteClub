@@ -105,17 +105,14 @@ public class GameManager : MonoBehaviour {
 		healthBar.fillAmount += healthIncrement;
 	}
 
-	public void DamagePlayer() 
+	public void DamagePlayer(float multiplier = 1f) 
 	{
 		if (healthBar.fillAmount < damageIncrement) {
 			KillPlayer ();
 		}
 
-		Debug.Log ("Health -1!");
-		// decrement health and update UI
-		// decide if spikes can hurt player one or more times #decide
-		healthBar.fillAmount -= damageIncrement;
-		controller.SetHealth (controller.GetHealth() - damageIncrement);
+		healthBar.fillAmount -= multiplier * damageIncrement;
+		controller.SetHealth (controller.GetHealth() - multiplier * damageIncrement);
 
 	}
 

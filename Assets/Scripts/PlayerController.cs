@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     // Moved speed and speedCap to GameManager since they need to be accessible to other scripts
-    public float jumpForce = 375f, maxDepth = 1f, partySpeed = 10f, fadeTime = 6f, boostSpeed = 120f, boostFadeTime = 3f;
+    public float jumpForce = 375f, maxDepth = 1f, partySpeed = 10f, fadeTime = 6f, boostDamageMultiplier = 3f, boostSpeed = 120f, boostFadeTime = 3f;
     public bool restrictingDepth;
     public Vector3 startPosition;
     public Color defaultColor, targetColor;
@@ -151,9 +151,9 @@ public class PlayerController : MonoBehaviour
     void Boost(Vector3 movement)
     {
 		
-		if (health > damageIncrement)
+		if (health > boostDamageMultiplier * damageIncrement)
         {
-			GameManager.instance.DamagePlayer ();
+			GameManager.instance.DamagePlayer (boostDamageMultiplier);
             rb.AddForce(movement * boostSpeed);
             StartCoroutine("BoostTrail");
         }
