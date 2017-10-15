@@ -188,7 +188,6 @@ public class GameManager : MonoBehaviour {
 
 	public void SubtractBoostBars()
 	{
-
 		if (boostBars.Count > 0) {
 
 			if (canSubtract) {
@@ -215,7 +214,6 @@ public class GameManager : MonoBehaviour {
 				barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
 				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
 			}
-
 		}
 	}
 

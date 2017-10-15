@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 	Renderer render;
     float timeLeft = 1.0f;
-    bool partying = false;
+    bool oneTime, partying = false;
 
     // Use this for initialization
     void Start()
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             Boost(movement);
         }
+
 
     }
 
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour
 			GameManager.instance.DamagePlayer (boostDamageMultiplier);
             rb.AddForce(movement * boostSpeed);
 			GameManager.instance.SubtractOneBoost ();
-            StartCoroutine("BoostTrail");
+			StartCoroutine("BoostTrail");
         }
     }
 
@@ -170,4 +171,5 @@ public class PlayerController : MonoBehaviour
 	public void cannonBoost(Vector3 BlastForce) {
 		rb.AddForce(BlastForce);
 	}
+
 }
