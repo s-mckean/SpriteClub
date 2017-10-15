@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour {
 	public float speed, speedCap, restartDelay;
 
 	PlayerController controller;
-	bool gameEnded = false;
-    int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars;
+	bool gameEnded = false, canSubtract = false;
+    int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars, healthCounter = 0;
 	float healthBarWidth, boostBarWidth;
 	Vector3 checkpointPosition, boostBarOrigin;
 	List<Image> boostBars = new List<Image> ();
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Debug.Log (canSubtract);
 	}
 
     public void IncrementCoins()
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
 	{
 		controller.SetHealth (controller.GetHealth() + healthIncrement);
 		healthBar.fillAmount += healthIncrement;
-		ManageBoostBars ();
+		AddBoostBars ();
 	}
 
 	public void DamagePlayer(float multiplier = 1f) 
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour {
 
 		healthBar.fillAmount -= multiplier * damageIncrement;
 		controller.SetHealth (controller.GetHealth() - multiplier * damageIncrement);
-
+		SubtractBoostBars ();
 	}
 
 	void KillPlayer()
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour {
         else Application.Quit();
     }
 
-	public void ManageBoostBars()
+	public void AddBoostBars()
 	{
 		if (numberOfBoostBars < maxBoostBars) {
 
@@ -171,11 +171,50 @@ public class GameManager : MonoBehaviour {
 				barPosition.x += GameManager.instance.damageIncrement * healthBarWidth;
 				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
 			}
-				
 			if (controller.GetHealth () >= newBarHealth) {
 				CreateNewBar ();
 				numberOfBoostBars++;
+				canSubtract = true;
+			} else {
+				canSubtract = false;
 			}
+
+			if (healthCounter > 0) {
+				healthCounter--;
+			}
+
+		}
+	}
+
+	public void SubtractBoostBars()
+	{
+
+		if (boostBars.Count > 0) {
+
+			if (canSubtract) {
+
+				healthCounter++;
+				switch (healthCounter) {
+
+				case 1:
+					Destroy (boostBars [boostBars.Count - 1].gameObject);
+					boostBars.RemoveAt (boostBars.Count - 1);
+					numberOfBoostBars--;
+					break;
+				case 3:
+					healthCounter = 0;
+					break;
+				default:
+					break;
+
+				}
+			}
+
+		for (int i = 0; i < boostBars.Count; i++) {
+			Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
+			barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
+			boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
+		}
 
 		}
 	}
