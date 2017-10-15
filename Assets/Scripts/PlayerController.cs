@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
 
     // Moved speed and speedCap to GameManager since they need to be accessible to other scripts
-    public float jumpForce, maxDepth, partySpeed, fadeTime;
+    public float jumpForce = 375f, maxDepth = 1f, partySpeed = 10f, fadeTime = 6f, boostSpeed = 120f, boostFadeTime = 3f;
     public bool restrictingDepth;
     public Vector3 startPosition;
     public Color defaultColor, targetColor;
 
     Rigidbody rb;
-    float radius, health;
+    float radius, health, damageIncrement;
     Collider[] colliders;
 
 	Renderer render;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         health = 0f;
+		damageIncrement = GameManager.instance.damageIncrement;
         render = GetComponent<Renderer>();
         render.sharedMaterial.color = defaultColor;
     }
@@ -149,10 +150,11 @@ public class PlayerController : MonoBehaviour
 
     void Boost(Vector3 movement)
     {
-        if (health > 0)
+		
+		if (health > damageIncrement)
         {
-            Debug.Log("Boost activate!");
-            rb.AddForce(movement * 120);
+			GameManager.instance.DamagePlayer ();
+            rb.AddForce(movement * boostSpeed);
             StartCoroutine("BoostTrail");
         }
     }
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator BoostTrail()
     {
         GetComponent<TrailRenderer>().enabled = true;
-        yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(boostFadeTime);
         GetComponent<TrailRenderer>().enabled = false;
         yield return null;
     }
