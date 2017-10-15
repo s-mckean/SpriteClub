@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject player;
+    public GameObject player, deathParticles;
     public Text coinsText;
     public GameObject YouWin;
     public static GameManager instance = null;
@@ -122,7 +122,9 @@ public class GameManager : MonoBehaviour {
 
 	void KillPlayer()
 	{
+		Vector3 deathPosition = player.transform.position;
 		Destroy(player.gameObject);
+		Instantiate (deathParticles, deathPosition, Quaternion.identity);
 		Invoke("ResetToStart", restartDelay);
 	}
 

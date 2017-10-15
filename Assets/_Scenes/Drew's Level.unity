@@ -5026,8 +5026,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1856498889}
+  deathParticles: {fileID: 1074120442552864, guid: 3fd41a04b12dd9c498a0c3a342c6f691,
+    type: 2}
   coinsText: {fileID: 2051739446}
-  YouWin: {fileID: 2122716168}
+  YouWin: {fileID: 0}
   healthBar: {fileID: 650538746}
   healthIncrement: 0.05
   damageIncrement: 0.05
