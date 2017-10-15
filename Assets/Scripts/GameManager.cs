@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject player;
     public Text coinsText;
-    public Text YouWin;
+    public GameObject YouWin;
     public static GameManager instance = null;
 	public Image healthBar;
 	public float healthIncrement, damageIncrement = 0.05f;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		controller = player.GetComponent<PlayerController> ();
+        checkpointPosition = player.transform.position;
         healthBar.fillAmount = 0;
 	}
 	
@@ -64,10 +65,11 @@ public class GameManager : MonoBehaviour {
     {
         if (gameEnded)
         {
-            YouWin.GetComponent<Text>().enabled = false;
+            YouWin.SetActive(false);
             gameEnded = false;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ChangeScene();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         /*GameObject obj = GameObject.FindGameObjectWithTag("Player");
         PlayerController playerController = obj.GetComponent<PlayerController>();
         obj.transform.position = playerController.startPosition;
@@ -93,8 +95,8 @@ public class GameManager : MonoBehaviour {
         if (!gameEnded)
         {
             gameEnded = true;
-            YouWin.GetComponent<Text>().enabled = true;
-            Invoke("ResetToStart", 5f);
+            YouWin.SetActive(true);
+            //Invoke("ResetToStart", 5f);
         }
     }
 
@@ -134,4 +136,20 @@ public class GameManager : MonoBehaviour {
 	{
 		return currentCheckpoint;
 	}
+
+    public void ChangeScene()
+    {
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentSceneIndex == totalScenes - 1) PlayerWin();
+        else SceneManager.LoadScene(currentSceneIndex + 1);
+
+    }
+
+    public void GameOverButtons(bool restart)
+    {
+        if (restart) SceneManager.LoadScene(0);
+        else Application.Quit();
+    }
 }

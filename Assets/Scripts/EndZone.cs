@@ -8,7 +8,7 @@ public class EndZone : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.PlayerWin();
+            GameManager.instance.ChangeScene();
         }
     }
 }
