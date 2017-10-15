@@ -9,15 +9,18 @@ public class GameManager : MonoBehaviour {
     public GameObject player, deathParticles;
     public Text coinsText;
     public GameObject YouWin;
-    public static GameManager instance = null;
-	public Image healthBar;
+	public static GameManager instance = null;
+	public  GameObject boostParent;
+	public Image healthBar, boostBar;
 	public float healthIncrement, damageIncrement = 0.05f;
 	public float speed, speedCap, restartDelay;
 
 	PlayerController controller;
 	bool gameEnded = false;
-    int currentCheckpoint, coinsCollected = 0;
-	Vector3 checkpointPosition;
+    int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars;
+	float healthBarWidth, boostBarWidth;
+	Vector3 checkpointPosition, boostBarOrigin;
+	List<Image> boostBars = new List<Image> ();
 
     private void Awake()
     {
@@ -32,6 +35,10 @@ public class GameManager : MonoBehaviour {
 		controller = player.GetComponent<PlayerController> ();
         checkpointPosition = player.transform.position;
         healthBar.fillAmount = 0;
+		healthBarWidth = healthBar.GetComponent<RectTransform> ().sizeDelta.x;
+		boostBarWidth = boostBar.GetComponent<RectTransform> ().sizeDelta.x;
+		maxBoostBars = Mathf.RoundToInt(healthBarWidth / boostBarWidth);
+		boostBarOrigin = boostBar.GetComponent<RectTransform> ().anchoredPosition3D;
 	}
 	
 	// Update is called once per frame
@@ -103,6 +110,7 @@ public class GameManager : MonoBehaviour {
 	{
 		controller.SetHealth (controller.GetHealth() + healthIncrement);
 		healthBar.fillAmount += healthIncrement;
+		ManageBoostBars ();
 	}
 
 	public void DamagePlayer(float multiplier = 1f) 
@@ -150,4 +158,54 @@ public class GameManager : MonoBehaviour {
         if (restart) SceneManager.LoadScene(0);
         else Application.Quit();
     }
+
+	public void ManageBoostBars()
+	{
+		if (numberOfBoostBars < maxBoostBars) {
+
+			float boostChunk = damageIncrement * controller.boostDamageMultiplier;
+			float newBarHealth = (numberOfBoostBars + 1) * boostChunk;
+
+			for (int i = 0; i < boostBars.Count; i++) {
+				Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
+				barPosition.x += GameManager.instance.damageIncrement * healthBarWidth;
+				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
+			}
+				
+			if (controller.GetHealth () >= newBarHealth) {
+				CreateNewBar ();
+				numberOfBoostBars++;
+			}
+
+		}
+	}
+
+
+	void CreateNewBar()
+	{
+		Image newBar = Instantiate (boostBar, boostBarOrigin, Quaternion.identity);
+		newBar.transform.SetParent (boostParent.transform);
+		newBar.GetComponent<RectTransform> ().anchoredPosition = boostBarOrigin;
+		ResetBarToOrigin (newBar);
+		boostBars.Add (newBar);
+	}
+
+	void ResetBarToOrigin(Image bar)
+	{
+		RectTransform rect = bar.GetComponent<RectTransform> ();
+
+		Quaternion rot = rect.localRotation;
+		rot.x = 0f;
+		rect.localRotation = rot;
+
+		Vector3 pos = rect.anchoredPosition3D;
+		pos.z = 0f;
+		rect.anchoredPosition3D = pos;
+
+		Vector3 scale = rect.localScale;
+		scale = Vector3.one;
+		rect.localScale = scale;
+	}
+
+
 }
