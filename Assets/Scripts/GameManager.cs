@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     void Start () {
 		controller = player.GetComponent<PlayerController> ();
         checkpointPosition = player.transform.position;
+        healthBar.fillAmount = 0;
 	}
 	
 	// Update is called once per frame
