@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.4964137, b: 0.5748193, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657934, g: 0.49641317, b: 0.5748188, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1907,13 +1907,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1856498889}
+  deathParticles: {fileID: 0}
   coinsText: {fileID: 2051739446}
-  YouWin: {fileID: 2122716168}
+  YouWin: {fileID: 0}
   healthBar: {fileID: 650538746}
   healthIncrement: 0.05
   damageIncrement: 0.05
   speed: 100
   speedCap: 25
+  restartDelay: 0
 --- !u!4 &683419881
 Transform:
   m_ObjectHideFlags: 0
