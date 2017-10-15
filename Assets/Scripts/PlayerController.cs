@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("player death!");
             GameObject.Destroy(player);
+            GameManager.instance.ResetToStart();
         }
 
 	}
