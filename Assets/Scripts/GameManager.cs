@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		controller = player.GetComponent<PlayerController> ();
+        healthBar.fillAmount = 0;
 	}
 	
 	// Update is called once per frame
