@@ -4968,7 +4968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4791402213948088, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
         type: 2}
@@ -5026,8 +5026,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1856498889}
+  deathParticles: {fileID: 1074120442552864, guid: 3fd41a04b12dd9c498a0c3a342c6f691,
+    type: 2}
   coinsText: {fileID: 2051739446}
-  YouWin: {fileID: 2122716168}
+  YouWin: {fileID: 0}
   healthBar: {fileID: 650538746}
   healthIncrement: 0.05
   damageIncrement: 0.05
@@ -5045,7 +5047,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &732664765 stripped
 Transform:
@@ -23967,7 +23969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingRaycasts: 0
   player: {fileID: 1856498889}
-  movementScale: 1
+  movementScale: 4
   clickThreshold: 0.25
   touchInputMask:
     serializedVersion: 2
