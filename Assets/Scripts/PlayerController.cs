@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
         {
 			GameManager.instance.DamagePlayer (boostDamageMultiplier);
             rb.AddForce(movement * boostSpeed);
+			GameManager.instance.SubtractOneBoost ();
             StartCoroutine("BoostTrail");
         }
     }

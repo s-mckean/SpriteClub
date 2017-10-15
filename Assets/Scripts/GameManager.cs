@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject player, deathParticles;
-    public Text coinsText;
-    public GameObject YouWin;
+	public GameObject player, deathParticles;
+	public Text coinsText;
+	public GameObject YouWin;
 	public static GameManager instance = null;
 	public  GameObject boostParent;
 	public Image healthBar, boostBar;
@@ -17,47 +17,47 @@ public class GameManager : MonoBehaviour {
 
 	PlayerController controller;
 	bool gameEnded = false, canSubtract = false;
-    int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars, healthCounter = 0;
+	int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars, healthCounter = 0;
 	float healthBarWidth, boostBarWidth;
 	Vector3 checkpointPosition, boostBarOrigin;
 	List<Image> boostBars = new List<Image> ();
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-    }
+	private void Awake()
+	{
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject);
+	}
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		controller = player.GetComponent<PlayerController> ();
-        checkpointPosition = player.transform.position;
-        healthBar.fillAmount = 0;
+		checkpointPosition = player.transform.position;
+		healthBar.fillAmount = 0;
 		healthBarWidth = healthBar.GetComponent<RectTransform> ().sizeDelta.x;
 		boostBarWidth = boostBar.GetComponent<RectTransform> ().sizeDelta.x;
 		maxBoostBars = Mathf.RoundToInt(healthBarWidth / boostBarWidth);
 		boostBarOrigin = boostBar.GetComponent<RectTransform> ().anchoredPosition3D;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (canSubtract);
+
 	}
 
-    public void IncrementCoins()
-    {
-        coinsCollected++;
+	public void IncrementCoins()
+	{
+		coinsCollected++;
 
-        if (speed < speedCap)
-        {
-            speed++;
-        }
+		if (speed < speedCap)
+		{
+			speed++;
+		}
 		controller.PartyTime ();
-        coinsText.text = coinsCollected.ToString();
-    }
-/*
+		coinsText.text = coinsCollected.ToString();
+	}
+	/*
     public void ResetToStart(Collider obj)
 	{
 		if (obj.CompareTag ("Player")) {
@@ -68,20 +68,20 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 */
-    public void ResetToStart()
-    {
-        if (gameEnded)
-        {
-            YouWin.SetActive(false);
-            gameEnded = false;
-        }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        /*GameObject obj = GameObject.FindGameObjectWithTag("Player");
+	public void ResetToStart()
+	{
+		if (gameEnded)
+		{
+			YouWin.SetActive(false);
+			gameEnded = false;
+		}
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		/*GameObject obj = GameObject.FindGameObjectWithTag("Player");
         PlayerController playerController = obj.GetComponent<PlayerController>();
         obj.transform.position = playerController.startPosition;
         playerController.GetComponent<Rigidbody>().velocity = Vector3.zero;
         playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
-    }
+	}
 
 	public void ResetToCheckpoint()
 	{
@@ -89,22 +89,22 @@ public class GameManager : MonoBehaviour {
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 	}
 
-    // Consolidated into IncrementCoins()
-/*
+	// Consolidated into IncrementCoins()
+	/*
     public void UpdateCoinsText(int totalCoins)
     {
         coinsText.text = totalCoins.ToString();
     }
 */
-    public void PlayerWin()
-    {
-        if (!gameEnded)
-        {
-            gameEnded = true;
-            YouWin.SetActive(true);
-            //Invoke("ResetToStart", 5f);
-        }
-    }
+	public void PlayerWin()
+	{
+		if (!gameEnded)
+		{
+			gameEnded = true;
+			YouWin.SetActive(true);
+			//Invoke("ResetToStart", 5f);
+		}
+	}
 
 	public void IncreaseHealth()
 	{
@@ -143,21 +143,21 @@ public class GameManager : MonoBehaviour {
 		return currentCheckpoint;
 	}
 
-    public void ChangeScene()
-    {
-        int totalScenes = SceneManager.sceneCountInBuildSettings;
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+	public void ChangeScene()
+	{
+		int totalScenes = SceneManager.sceneCountInBuildSettings;
+		int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentSceneIndex == totalScenes - 1) PlayerWin();
-        else SceneManager.LoadScene(currentSceneIndex + 1);
+		if (currentSceneIndex == totalScenes - 1) PlayerWin();
+		else SceneManager.LoadScene(currentSceneIndex + 1);
 
-    }
+	}
 
-    public void GameOverButtons(bool restart)
-    {
-        if (restart) SceneManager.LoadScene(0);
-        else Application.Quit();
-    }
+	public void GameOverButtons(bool restart)
+	{
+		if (restart) SceneManager.LoadScene(0);
+		else Application.Quit();
+	}
 
 	public void AddBoostBars()
 	{
@@ -210,15 +210,30 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 
-		for (int i = 0; i < boostBars.Count; i++) {
-			Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
-			barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
-			boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
-		}
+			for (int i = 0; i < boostBars.Count; i++) {
+				Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
+				barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
+				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
+			}
 
 		}
 	}
 
+	public void SubtractOneBoost()
+	{
+		Debug.Log ("Subtract one");
+		Destroy (boostBars [boostBars.Count - 1].gameObject);
+		boostBars.RemoveAt (boostBars.Count - 1);
+		numberOfBoostBars--;
+
+		for (int j = 0; j < 2; j++) {
+			for (int i = 0; i < boostBars.Count; i++) {
+				Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
+				barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
+				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
+			}
+		}
+	}
 
 	void CreateNewBar()
 	{
