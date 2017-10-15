@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     float radius, health;
     Collider[] colliders;
 
-    Renderer renderer;
+	Renderer render;
     float timeLeft = 1.0f;
     bool partying = false;
 
@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         health = 0f;
-        renderer = GetComponent<Renderer>();
-        renderer.sharedMaterial.color = defaultColor;
+        render = GetComponent<Renderer>();
+        render.sharedMaterial.color = defaultColor;
     }
 
     void FixedUpdate()
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         partying = true;
         while (timeLeft > Time.deltaTime)
         {
-            renderer.sharedMaterial.color = Color.Lerp(defaultColor, targetColor, Time.deltaTime * partySpeed / timeLeft);
+            render.sharedMaterial.color = Color.Lerp(defaultColor, targetColor, Time.deltaTime * partySpeed / timeLeft);
             timeLeft -= Time.deltaTime * partySpeed;
             yield return null;
         }
@@ -123,12 +123,12 @@ public class PlayerController : MonoBehaviour
         float hangover = partySpeed / fadeTime;
         while (timeLeft > Time.deltaTime)
         {
-            renderer.sharedMaterial.color = Color.Lerp(targetColor, defaultColor, Time.deltaTime * hangover / timeLeft);
+            render.sharedMaterial.color = Color.Lerp(targetColor, defaultColor, Time.deltaTime * hangover / timeLeft);
             timeLeft -= Time.deltaTime * hangover;
             yield return null;
         }
 
-        renderer.sharedMaterial.color = defaultColor;
+        render.sharedMaterial.color = defaultColor;
         timeLeft = 1.0f;
         partying = false;
     }
