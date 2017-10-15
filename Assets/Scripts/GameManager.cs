@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 	public Image healthBar;
 	public float healthIncrement, damageIncrement = 0.05f;
-	public float speed, speedCap;
+	public float speed, speedCap, restartDelay;
 
 	PlayerController controller;
 	bool gameEnded = false;
@@ -108,11 +108,22 @@ public class GameManager : MonoBehaviour {
 
 	public void DamagePlayer() 
 	{
+		if (healthBar.fillAmount < damageIncrement) {
+			KillPlayer ();
+		}
+
 		Debug.Log ("Health -1!");
 		// decrement health and update UI
 		// decide if spikes can hurt player one or more times #decide
 		healthBar.fillAmount -= damageIncrement;
 		controller.SetHealth (controller.GetHealth() - damageIncrement);
+
+	}
+
+	void KillPlayer()
+	{
+		Destroy(player.gameObject);
+		Invoke("ResetToStart", restartDelay);
 	}
 
 	public void SetCheckpoint(Vector3 checkpoint, int checkpointNum)

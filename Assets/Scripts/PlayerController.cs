@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 startPosition;
 	public Color defaultColor, targetColor;
 
-    public GameObject player;
-
 	Rigidbody rb;
 	float radius, health;
 	Collider[] colliders;
@@ -52,13 +50,6 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Boost(movement);
-        }
-
-        if (health < 0)
-        {
-            Debug.Log("player death!");
-            GameObject.Destroy(player);
-            GameManager.instance.ResetToStart();
         }
 
 	}
