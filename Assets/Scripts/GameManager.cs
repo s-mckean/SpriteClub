@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 	public float speed, speedCap, restartDelay;
 
 	PlayerController controller;
-	bool gameEnded = false, canSubtract = false;
+	bool gameEnded = false, restartLevelOnFall = false, canSubtract = false;
 	int currentCheckpoint, coinsCollected = 0, numberOfBoostBars = 0, maxBoostBars, healthCounter = 0;
 	float healthBarWidth, boostBarWidth;
 	Vector3 checkpointPosition, boostBarOrigin;
@@ -85,6 +85,9 @@ public class GameManager : MonoBehaviour {
 
 	public void ResetToCheckpoint()
 	{
+		if (restartLevelOnFall) {
+			ResetToStart ();
+		}
 		player.transform.position = checkpointPosition;
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 	}
@@ -132,10 +135,12 @@ public class GameManager : MonoBehaviour {
 		Invoke("ResetToStart", restartDelay);
 	}
 
-	public void SetCheckpoint(Vector3 checkpoint, int checkpointNum)
+	public void SetCheckpoint(Vector3 checkpoint, int checkpointNum, bool restart)
 	{
 		currentCheckpoint = checkpointNum;
 		checkpointPosition = checkpoint;
+		restartLevelOnFall = restart;
+		Debug.Log (restart);
 	}
 
 	public int GetLastCheckpoint()

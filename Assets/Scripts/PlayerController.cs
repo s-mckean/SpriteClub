@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Boost(movement);
         }

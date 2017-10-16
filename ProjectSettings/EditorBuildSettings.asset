@@ -12,5 +12,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/Drew's Level.unity
     guid: 9cfe799ba0e5f7f4794a824768cd9322
   - enabled: 1
+    path: Assets/_Scenes/Maxim's Level.unity
+    guid: fa562cd9a818b70418b4cadea88f32b6
+  - enabled: 1
     path: Assets/_Scenes/Test Level.unity
     guid: e13752be56b7ac542af69b4b217f3c46
