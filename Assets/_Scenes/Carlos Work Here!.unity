@@ -1758,7 +1758,7 @@ MonoBehaviour:
   boostBar: {fileID: 114623203018835240, guid: c4b308045626d8e468fc55c94eb269cf, type: 2}
   healthIncrement: 0.05
   damageIncrement: 0.05
-  nextLevelDelay: 5
+  nextLevelDelay: 3
   speed: 18
   speedCap: 25
   restartDelay: 2

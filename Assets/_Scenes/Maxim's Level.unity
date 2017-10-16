@@ -12962,6 +12962,11 @@ Prefab:
       propertyPath: fireworks
       value: 
       objectReference: {fileID: 897258285}
+    - target: {fileID: 114823850560848514, guid: b81d67112539bd94b9a846d7e83a3256,
+        type: 2}
+      propertyPath: nextLevelDelay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b81d67112539bd94b9a846d7e83a3256, type: 2}
   m_IsPrefabParent: 0
