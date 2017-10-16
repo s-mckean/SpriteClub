@@ -161,6 +161,7 @@ public class GameManager : MonoBehaviour {
 
 	public void AddBoostBars()
 	{
+        Debug.Log("ADDING HEALTH");
 		if (numberOfBoostBars < maxBoostBars) {
 
 			float boostChunk = damageIncrement * controller.boostDamageMultiplier;
