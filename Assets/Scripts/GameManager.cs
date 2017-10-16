@@ -68,8 +68,7 @@ public class GameManager : MonoBehaviour {
             YouWin.SetActive(false);
             gameEnded = false;
         }
-        ChangeScene();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         /*GameObject obj = GameObject.FindGameObjectWithTag("Player");
         PlayerController playerController = obj.GetComponent<PlayerController>();
         obj.transform.position = playerController.startPosition;

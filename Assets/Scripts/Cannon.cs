@@ -7,12 +7,18 @@ public class Cannon : MonoBehaviour {
 	private Vector3 eulerAngles;
 	private Vector3 cannonBlastForce;
 	private float yValue;
+	private float xValue;
+	private GameObject wheel;
+	private float angle;
 	// Use this for initialization
 	void Start () {
+		wheel = GameObject.FindGameObjectWithTag ("Wheel");
 		player = GameObject.FindGameObjectWithTag ("Player");
-		eulerAngles = transform.rotation.eulerAngles;
-		yValue = ((1000f * (eulerAngles.x)) / 90);
-		Debug.Log (eulerAngles.x);
+		angle = wheel.transform.rotation.eulerAngles.z;
+		yValue = (angle / 90) * 1000f;
+		Debug.Log (angle);
+		xValue = ((Mathf.Abs(angle - 90)) / 90) * 1000f;
+		Debug.Log (wheel.transform.rotation.eulerAngles.z);
 	}
 
 	// Update is called once per frame
@@ -22,7 +28,7 @@ public class Cannon : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("Gottem");
-			player.GetComponent<PlayerController>().cannonBoost(new Vector3 (2000f, yValue, 0.0f));
+			player.GetComponent<PlayerController>().cannonBoost(new Vector3 (xValue, yValue, 0.0f));
 			Debug.Log (yValue);
 		}
 	}
