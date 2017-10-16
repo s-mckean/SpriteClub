@@ -57,17 +57,7 @@ public class GameManager : MonoBehaviour {
 		controller.PartyTime ();
 		coinsText.text = coinsCollected.ToString();
 	}
-	/*
-    public void ResetToStart(Collider obj)
-	{
-		if (obj.CompareTag ("Player")) {
-			PlayerController playerController = obj.GetComponent<PlayerController> ();
-			obj.transform.position = playerController.startPosition;
-			playerController.GetComponent<Rigidbody> ().velocity = Vector3.zero;
-			playerController.GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
-		}
-	}
-*/
+
 	public void ResetToStart()
 	{
 		if (gameEnded)
@@ -76,11 +66,6 @@ public class GameManager : MonoBehaviour {
 			gameEnded = false;
 		}
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		/*GameObject obj = GameObject.FindGameObjectWithTag("Player");
-        PlayerController playerController = obj.GetComponent<PlayerController>();
-        obj.transform.position = playerController.startPosition;
-        playerController.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        playerController.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
 	}
 
 	public void ResetToCheckpoint()
@@ -101,6 +86,8 @@ public class GameManager : MonoBehaviour {
 */
 	public void PlayerWin()
 	{
+		if (fireworks != null)
+			fireworks.SetActive (true);
 		if (!gameEnded)
 		{
 			gameEnded = true;
