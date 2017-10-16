@@ -309,7 +309,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4418456028027796, guid: 0d443142e5a498f48b03b06d83714006, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 4418456028027796, guid: 0d443142e5a498f48b03b06d83714006, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1455,6 +1455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0147d70ade7adbb448cfad990394d586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &681958654 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1804141930179292, guid: 94b96093b7ae12040886d18808e3d759,
+    type: 2}
+  m_PrefabInternal: {fileID: 1434020903}
 --- !u!1001 &682217659
 Prefab:
   m_ObjectHideFlags: 0
@@ -1543,7 +1548,7 @@ MonoBehaviour:
   deathParticles: {fileID: 1074120442552864, guid: 3fd41a04b12dd9c498a0c3a342c6f691,
     type: 2}
   coinsText: {fileID: 1261716554}
-  YouWin: {fileID: 0}
+  YouWin: {fileID: 681958654}
   boostParent: {fileID: 1434020904}
   healthBar: {fileID: 1434020905}
   boostBar: {fileID: 114623203018835240, guid: c4b308045626d8e468fc55c94eb269cf, type: 2}
