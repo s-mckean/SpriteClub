@@ -5060,6 +5060,21 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: targetColor.r
+      value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: targetColor.g
+      value: 0.45882356
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251557651647570, guid: e16f34f417c6ea448ba41f9c7653f9ff,
+        type: 2}
+      propertyPath: targetColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e16f34f417c6ea448ba41f9c7653f9ff, type: 2}
   m_IsPrefabParent: 0
@@ -5093,6 +5108,7 @@ MonoBehaviour:
   player: {fileID: 1856498889}
   deathParticles: {fileID: 1074120442552864, guid: 3fd41a04b12dd9c498a0c3a342c6f691,
     type: 2}
+  fireworks: {fileID: 0}
   coinsText: {fileID: 2076788577}
   YouWin: {fileID: 696994728}
   boostParent: {fileID: 1291805000}
@@ -5100,9 +5116,10 @@ MonoBehaviour:
   boostBar: {fileID: 114623203018835240, guid: c4b308045626d8e468fc55c94eb269cf, type: 2}
   healthIncrement: 0.05
   damageIncrement: 0.05
+  nextLevelDelay: 5
   speed: 18
   speedCap: 25
-  restartDelay: 0
+  restartDelay: 2.5
 --- !u!4 &683419881
 Transform:
   m_ObjectHideFlags: 0
@@ -7265,7 +7282,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7911,8 +7928,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1056317320}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 42.25, y: 1.6, z: -5}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: 41.95, y: 1.6, z: -5}
+  m_LocalScale: {x: 5, y: 0.3, z: 5}
   m_Children: []
   m_Father: {fileID: 1276955116}
   m_RootOrder: 1
@@ -7931,7 +7948,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5dc8657a747150b4cb256543b2c6152c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8800,7 +8817,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9535,7 +9552,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11551,7 +11568,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12828,7 +12845,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15694,7 +15711,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 929d9adef1c43a442b05c1ba86b9ca5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
