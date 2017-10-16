@@ -168,7 +168,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<TrailRenderer>().enabled = false;
         yield return null;
     }
-	public void cannonBoost(Vector3 BlastForce) {
+	public void cannonBoost(Vector3 BlastForce) 
+	{
 		rb.AddForce(BlastForce);
 	}
 
