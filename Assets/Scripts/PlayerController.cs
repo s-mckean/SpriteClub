@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 	public bool restrictingDepth;
 	public Vector3 startPosition;
 	public Color defaultColor, targetColor;
-
 	Rigidbody rb;
 	float radius, health;
 	Collider[] colliders;
@@ -146,4 +145,7 @@ public class PlayerController : MonoBehaviour {
             }
    
     }
+	public void cannonBoost(Vector3 BlastForce) {
+		rb.AddForce(BlastForce);
+	}
 }
