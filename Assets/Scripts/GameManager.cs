@@ -219,18 +219,23 @@ public class GameManager : MonoBehaviour {
 
 	public void SubtractOneBoost()
 	{
-		Debug.Log ("Subtract one");
-		Destroy (boostBars [boostBars.Count - 1].gameObject);
-		boostBars.RemoveAt (boostBars.Count - 1);
-		numberOfBoostBars--;
+        if (boostBars.Count > 0)
+        {
+            Debug.Log("Subtract one");
+            Destroy(boostBars[boostBars.Count - 1].gameObject);
+            boostBars.RemoveAt(boostBars.Count - 1);
+            numberOfBoostBars--;
 
-		for (int j = 0; j < 2; j++) {
-			for (int i = 0; i < boostBars.Count; i++) {
-				Vector2 barPosition = boostBars [i].GetComponent<RectTransform> ().anchoredPosition;
-				barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
-				boostBars [i].GetComponent<RectTransform> ().anchoredPosition = barPosition;
-			}
-		}
+            for (int j = 0; j < 2; j++)
+            {
+                for (int i = 0; i < boostBars.Count; i++)
+                {
+                    Vector2 barPosition = boostBars[i].GetComponent<RectTransform>().anchoredPosition;
+                    barPosition.x -= GameManager.instance.damageIncrement * healthBarWidth;
+                    boostBars[i].GetComponent<RectTransform>().anchoredPosition = barPosition;
+                }
+            }
+        }
 	}
 
 	void CreateNewBar()
