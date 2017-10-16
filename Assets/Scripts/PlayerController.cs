@@ -5,16 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float jumpForce, maxDepth, partySpeed, fadeTime;
+    // Moved speed and speedCap to GameManager since they need to be accessible to other scripts
+    public float jumpForce = 375f, maxDepth = 1f, partySpeed = 10f, fadeTime = 6f, boostDamageMultiplier = 3f, boostSpeed = 120f, boostFadeTime = 3f;
     public bool restrictingDepth;
     public Vector3 startPosition;
     public Color defaultColor, targetColor;
 
     Rigidbody rb;
-    float radius, health;
+    float radius, health, damageIncrement;
     Collider[] colliders;
 
-    Renderer renderer;
+	Renderer render;
     float timeLeft = 1.0f;
     bool partying = false;
 
@@ -25,8 +26,9 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         health = 0f;
-        renderer = GetComponent<Renderer>();
-        renderer.sharedMaterial.color = defaultColor;
+		damageIncrement = GameManager.instance.damageIncrement;
+        render = GetComponent<Renderer>();
+        render.sharedMaterial.color = defaultColor;
     }
 
     void FixedUpdate()
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour
         partying = true;
         while (timeLeft > Time.deltaTime)
         {
-            renderer.sharedMaterial.color = Color.Lerp(defaultColor, targetColor, Time.deltaTime * partySpeed / timeLeft);
+            render.sharedMaterial.color = Color.Lerp(defaultColor, targetColor, Time.deltaTime * partySpeed / timeLeft);
             timeLeft -= Time.deltaTime * partySpeed;
             yield return null;
         }
@@ -122,12 +124,12 @@ public class PlayerController : MonoBehaviour
         float hangover = partySpeed / fadeTime;
         while (timeLeft > Time.deltaTime)
         {
-            renderer.sharedMaterial.color = Color.Lerp(targetColor, defaultColor, Time.deltaTime * hangover / timeLeft);
+            render.sharedMaterial.color = Color.Lerp(targetColor, defaultColor, Time.deltaTime * hangover / timeLeft);
             timeLeft -= Time.deltaTime * hangover;
             yield return null;
         }
 
-        renderer.sharedMaterial.color = defaultColor;
+        render.sharedMaterial.color = defaultColor;
         timeLeft = 1.0f;
         partying = false;
     }
@@ -148,10 +150,11 @@ public class PlayerController : MonoBehaviour
 
     void Boost(Vector3 movement)
     {
-        if (health > 0)
+		
+		if (health > boostDamageMultiplier * damageIncrement)
         {
-            Debug.Log("Boost activate!");
-            rb.AddForce(movement * 120);
+			GameManager.instance.DamagePlayer (boostDamageMultiplier);
+            rb.AddForce(movement * boostSpeed);
             StartCoroutine("BoostTrail");
         }
     }
@@ -159,7 +162,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator BoostTrail()
     {
         GetComponent<TrailRenderer>().enabled = true;
-        yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(boostFadeTime);
         GetComponent<TrailRenderer>().enabled = false;
         yield return null;
     }

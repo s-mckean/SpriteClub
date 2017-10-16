@@ -55,7 +55,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -71,7 +70,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -112,7 +110,6 @@ TrailRenderer:
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -128,7 +125,6 @@ TrailRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -210,10 +206,13 @@ MonoBehaviour:
   maxDepth: 1
   partySpeed: 10
   fadeTime: 4
+  boostDamageMultiplier: 3
+  boostSpeed: 120
+  boostFadeTime: 3
   restrictingDepth: 1
   startPosition: {x: 0, y: 0, z: 0}
   defaultColor: {r: 0.72156864, g: 0.72156864, b: 0.72156864, a: 1}
-  targetColor: {r: 0.8602941, g: 0.8114335, b: 0.15181659, a: 0}
+  targetColor: {r: 0.8602941, g: 0.51827043, b: 0.15181659, a: 0}
 --- !u!135 &135196275187577786
 SphereCollider:
   m_ObjectHideFlags: 1
