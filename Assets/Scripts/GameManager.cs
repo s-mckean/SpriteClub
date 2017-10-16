@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	public GameObject player, deathParticles;
+	public GameObject player, deathParticles, fireworks;
 	public Text coinsText;
 	public GameObject YouWin;
 	public static GameManager instance = null;
 	public  GameObject boostParent;
 	public Image healthBar, boostBar;
-	public float healthIncrement, damageIncrement = 0.05f;
+	public float healthIncrement, damageIncrement = 0.05f, nextLevelDelay = 5f;
 	public float speed, speedCap, restartDelay;
 
 	PlayerController controller;
@@ -154,8 +154,16 @@ public class GameManager : MonoBehaviour {
 		int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
 		if (currentSceneIndex == totalScenes - 1) PlayerWin();
-		else SceneManager.LoadScene(currentSceneIndex + 1);
+		else  {
+			if (fireworks != null) fireworks.SetActive (true);
+			Invoke ("LoadNextScene", nextLevelDelay);
+		}
 
+	}
+
+	void LoadNextScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public void GameOverButtons(bool restart)
