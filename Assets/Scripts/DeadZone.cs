@@ -9,7 +9,8 @@ public class DeadZone : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             GameManager.instance.ResetToCheckpoint();
-		} else {
+		}
+        else {
 			Destroy (other.gameObject);
 		}
     }

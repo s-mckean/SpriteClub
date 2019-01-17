@@ -11,7 +11,7 @@ public class CoinController : MonoBehaviour {
     private bool coinCollected = false;
 
 	void Start() {
-		mat = GetComponent<Renderer> ().material;
+		mat = GetComponent<Renderer>().material;
 	}
 
 	// Update is called once per frame

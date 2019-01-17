@@ -41,11 +41,6 @@ public class GameManager : MonoBehaviour {
 		boostBarOrigin = boostBar.GetComponent<RectTransform> ().anchoredPosition3D;
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 	public void IncrementCoins()
 	{
 		coinsCollected++;
@@ -77,13 +72,6 @@ public class GameManager : MonoBehaviour {
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 	}
 
-	// Consolidated into IncrementCoins()
-	/*
-    public void UpdateCoinsText(int totalCoins)
-    {
-        coinsText.text = totalCoins.ToString();
-    }
-*/
 	public void PlayerWin()
 	{
 		if (fireworks != null)
@@ -92,7 +80,6 @@ public class GameManager : MonoBehaviour {
 		{
 			gameEnded = true;
 			YouWin.SetActive(true);
-			//Invoke("ResetToStart", 5f);
 		}
 	}
 
@@ -127,7 +114,6 @@ public class GameManager : MonoBehaviour {
 		currentCheckpoint = checkpointNum;
 		checkpointPosition = checkpoint;
 		restartLevelOnFall = restart;
-		Debug.Log (restart);
 	}
 
 	public int GetLastCheckpoint()
@@ -161,7 +147,6 @@ public class GameManager : MonoBehaviour {
 
 	public void AddBoostBars()
 	{
-        Debug.Log("ADDING HEALTH");
 		if (numberOfBoostBars < maxBoostBars) {
 
 			float boostChunk = damageIncrement * controller.boostDamageMultiplier;
@@ -222,7 +207,6 @@ public class GameManager : MonoBehaviour {
 	{
         if (boostBars.Count > 0)
         {
-            Debug.Log("Subtract one");
             Destroy(boostBars[boostBars.Count - 1].gameObject);
             boostBars.RemoveAt(boostBars.Count - 1);
             numberOfBoostBars--;

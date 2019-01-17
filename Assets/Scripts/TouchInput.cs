@@ -145,11 +145,4 @@ public class TouchInput : MonoBehaviour {
 		}
 
 	}
-
-	void TouchInIOS()
-	{
-		
-	}
-
-
 }
