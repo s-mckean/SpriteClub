@@ -11,7 +11,7 @@ To move use the WASD keys, to jump press SPACE, and to boost press the CTRL key.
 Will you be able to beat all of the levels?
 
 
-![Link](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Image](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 
-![Alt Text](https://user-images.githubusercontent.com/42820224/51414043-e3236b80-1b25-11e9-81e6-ee98aae89d49.gif)
+![Image](https://user-images.githubusercontent.com/42820224/51414043-e3236b80-1b25-11e9-81e6-ee98aae89d49.gif)
