@@ -1,3 +1,4 @@
+#ROLLER
 Roller is a game where the objective is to get to the end of a particular level.
 
 As the player makes their way through the levels they will come across a slew of obstacles.
@@ -10,10 +11,5 @@ To move use the WASD keys, to jump press SPACE, and to boost press the CTRL key.
 
 Will you be able to beat all of the levels?
 
-
-<p><img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" alt="foo" title="title" /></p>
-
-![Image](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-
-
+#DEMO
 ![Image](https://user-images.githubusercontent.com/42820224/51414043-e3236b80-1b25-11e9-81e6-ee98aae89d49.gif)
