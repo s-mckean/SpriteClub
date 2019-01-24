@@ -14,3 +14,6 @@ Will you be able to beat all of the levels?
 
 # GAMEPLAY DEMO
 ![Image](https://user-images.githubusercontent.com/42820224/51414043-e3236b80-1b25-11e9-81e6-ee98aae89d49.gif)
+
+To download just the game or view the full demo video use this link:
+https://drive.google.com/drive/folders/1947vq7ga3F88g46Mbz-fV7rcLm-Lcy3A?usp=sharing
