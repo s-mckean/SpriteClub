@@ -17,4 +17,5 @@ Will you be able to beat all of the levels?
 
 To download just the game or view the full demo video use this link:
 https://drive.google.com/drive/folders/1947vq7ga3F88g46Mbz-fV7rcLm-Lcy3A?usp=sharing
+
 Note: The entire "Game Download" folder must be downloaded in order to play
